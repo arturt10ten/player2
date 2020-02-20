@@ -120,6 +120,7 @@ async function handle_static(r) {
         if (stat.isFile()) {
             let file = fs.createReadStream(a_path);
             r.res.writeHead(status, {
+                "Access-Control-Allow-Origin": "*",
                 "Content-Type": mime.getType(a_path),
                 "Content-Length": stat.size,
                 ...a_headers,
@@ -132,6 +133,7 @@ async function handle_static(r) {
                 withFileTypes: true,
             });
             r.res.writeHead(200, {
+                "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
             });
             r.res.end(
@@ -167,6 +169,20 @@ async function handle_static(r) {
         await fs.promises
             .rmdir("./" + r.path, { recursive: true })
             .catch(i => {});
+        r.res.writeHead(200, {
+            "Access-Control-Allow-Origin": "*",
+        });
+        r.res.end();
+        return;
+    }
+    if (r.req.method == "OPTIONS") {
+        console.log(r.req);
+        r.res.writeHead(200, {
+            "Access-Control-Allow-Methods": "*",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Max-Age": 100,
+        });
         r.res.end();
         return;
     }
