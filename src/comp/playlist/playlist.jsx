@@ -17,7 +17,9 @@ class Playlist {
     async _init(url) {
         this._data = await fetch(url).then(i => i.json());
         this._cur = 0;
-        this._elements = this._data.map(i => <a class={css["element"]}>{i}</a>);
+        this._elements = this._data.map(i => (
+            <a class={css["element"]}>{i.split("/").pop()}</a>
+        ));
         this._audio.src = this._data[this._cur];
         this._elements[this._cur].classList.add(css["active"]);
         this._audio.addEventListener("ended", () => {
