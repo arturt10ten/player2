@@ -59,6 +59,12 @@ class Dir {
          */
         let data = await fetch("/static/" + path).then(i => i.json());
         let elems = data.map(i => {
+            const fileDelete = async () => {
+                await fetch("/static/" + path + "/" + i.name, {
+                    method: "DELETE",
+                });
+                this.load(path);
+            };
             if (i.dir) {
                 return (
                     <a
@@ -74,7 +80,10 @@ class Dir {
                             this.load(path + "/" + i.name);
                         }}
                     >
-                        {i.name}
+                        <span class={css["name"]}>{i.name}</span>
+                        <span class={css["btns"]}>
+                            <img class={svg} src={del} onclick={fileDelete} />
+                        </span>
                     </a>
                 );
             }
@@ -86,8 +95,10 @@ class Dir {
                             "/static/" + path + "/" + i.name,
                         )}`}
                     >
-                        {i.name}
-                        <img class={svg} src={del} />
+                        <span class={css["name"]}>{i.name}</span>
+                        <span class={css["btns"]}>
+                            <img class={svg} src={del} onclick={fileDelete} />
+                        </span>
                     </a>
                 );
             }
@@ -97,7 +108,10 @@ class Dir {
                     download
                     href={encodeURI("/static/" + path + "/" + i.name)}
                 >
-                    {i.name}
+                    <span class={css["name"]}>{i.name}</span>
+                    <span class={css["btns"]}>
+                        <img class={svg} src={del} onclick={fileDelete} />
+                    </span>
                 </a>
             );
         });
