@@ -1,6 +1,7 @@
 import { build_html, embed, insert } from "../jsx.to.js";
 import css from "./file.css";
 
+import del from "../../res/trash.svg";
 import { List } from "../list/list.jsx";
 
 class Dir {
@@ -84,6 +85,7 @@ class Dir {
                         )}`}
                     >
                         {i.name}
+                        <img class={svg} src={del} />
                     </a>
                 );
             }

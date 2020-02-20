@@ -7,6 +7,8 @@ import pause from "../../res/pause.svg";
 import stop from "../../res/stop.svg";
 import next from "../../res/next.svg";
 
+import { svg } from "../../svg.css";
+
 class Playlist {
     constructor(url) {
         this._audio = new Audio();
@@ -42,35 +44,35 @@ class Playlist {
                 <div class={css["bar"]}>{this._bar}</div>
                 <div class={css["control"]}>
                     <img
-                        class={[css["btn"]]}
+                        class={[css["btn"], svg]}
                         src={prev}
                         onclick={() => {
                             this.go_prev();
                         }}
                     />
                     <img
-                        class={[css["btn"]]}
+                        class={[css["btn"], svg]}
                         src={stop}
                         onclick={() => {
                             this.stop();
                         }}
                     />
                     <img
-                        class={[css["btn"]]}
+                        class={[css["btn"], svg]}
                         src={pause}
                         onclick={() => {
                             this.pause();
                         }}
                     />
                     <img
-                        class={[css["btn"]]}
+                        class={[css["btn"], svg]}
                         src={play}
                         onclick={() => {
                             this.play();
                         }}
                     />
                     <img
-                        class={[css["btn"]]}
+                        class={[css["btn"], svg]}
                         src={next}
                         onclick={() => {
                             this.go_next();
