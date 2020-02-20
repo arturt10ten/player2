@@ -1,0 +1,28 @@
+{
+    "name": "player2.0",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "node compile.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/core": "^7.8.4",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/plugin-transform-react-jsx": "^7.8.3",
+        "@rollup/plugin-node-resolve": "^7.1.1",
+        "incstr": "^1.2.3",
+        "mime": "^2.4.4",
+        "postcss-url": "file:npm_fix/postcss-url",
+        "rollup": "^1.31.0",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-import-assets": "^1.1.0",
+        "rollup-plugin-import-images": "file:npm_fix/rollup-plugin-import-images",
+        "rollup-plugin-includepaths": "^0.2.3",
+        "rollup-plugin-off-main-thread": "file:npm_fix/rollup-plugin-off-main-thread",
+        "rollup-plugin-postcss": "file:npm_fix/rollup-plugin-postcss",
+        "rollup-plugin-terser": "^5.2.0"
+    }
+}

@@ -1,0 +1,10 @@
+.segment {
+    padding: 5px;
+    margin: 2px;
+    border-radius: 7px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    background: black;
+}

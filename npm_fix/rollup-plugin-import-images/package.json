@@ -1,0 +1,67 @@
+{
+    "_from": "rollup-plugin-import-assets",
+    "_id": "rollup-plugin-import-assets@1.1.0",
+    "_inBundle": false,
+    "_integrity": "sha512-NI2XEcZogfa6uE8t+hz0zOz/3pfFAnpE5dX15xsF9jJmF73qeiBbMX1w63YLW83aFw5+Gevblr7t1cXQ9Tb94Q==",
+    "_location": "/rollup-plugin-import-assets",
+    "_phantomChildren": {},
+    "_requested": {
+        "type": "tag",
+        "registry": true,
+        "raw": "rollup-plugin-import-assets",
+        "name": "rollup-plugin-import-assets",
+        "escapedName": "rollup-plugin-import-assets",
+        "rawSpec": "",
+        "saveSpec": null,
+        "fetchSpec": "latest"
+    },
+    "_requiredBy": [
+        "#DEV:/",
+        "#USER"
+    ],
+    "_resolved": "https://registry.npmjs.org/rollup-plugin-import-assets/-/rollup-plugin-import-assets-1.1.0.tgz",
+    "_shasum": "1cacaf4f69f36bcad4ef31408f132802892db946",
+    "_spec": "rollup-plugin-import-assets",
+    "_where": "/home/artur/progs/web/model3D",
+    "author": {
+        "name": "Fábio Domingues"
+    },
+    "bugs": {
+        "url": "https://github.com/domingues/rollup-plugin-import-assets/issues"
+    },
+    "bundleDependencies": false,
+    "dependencies": {
+        "rollup-pluginutils": "^2.7.1",
+        "url-join": "^4.0.1"
+    },
+    "deprecated": false,
+    "description": "Rollup plugin to import assets",
+    "devDependencies": {
+        "eslint": "^5.16.0"
+    },
+    "files": [
+        "index.js",
+        "README.md",
+        "LICENSE"
+    ],
+    "homepage": "https://github.com/domingues/rollup-plugin-import-assets",
+    "keywords": [
+        "rollup-plugin",
+        "assets"
+    ],
+    "license": "MIT",
+    "main": "index.js",
+    "name": "rollup-plugin-import-images",
+    "peerDependencies": {
+        "rollup": ">=1.9.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/domingues/rollup-plugin-import-assets.git"
+    },
+    "scripts": {
+        "lint": "eslint index.js",
+        "prepublishOnly": "npm run lint"
+    },
+    "version": "1.1.0"
+}
