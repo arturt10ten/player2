@@ -17,7 +17,7 @@ const postCSSUrl = require("postcss-url");
 
 const dist = "./dist/";
 const source = "./src/";
-const pages = ["index", "player"];
+const pages = ["index", "player", "disk"];
 var elems = {};
 const nextId = incstr.idGenerator({
     alphabet:
