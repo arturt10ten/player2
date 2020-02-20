@@ -69,7 +69,11 @@ class Dir {
                 return (
                     <a
                         class={[css["entery"], css["dir"]]}
-                        onclick={() => {
+                        href={`/file.html?path=${encodeURIComponent(
+                            path + "/" + i.name,
+                        )}`}
+                        onclick={event => {
+                            event.preventDefault();
                             history.pushState(
                                 "",
                                 path + "/" + i.name,
