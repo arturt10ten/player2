@@ -40,7 +40,7 @@ class Dir {
                                 x,
                                 `?path=${encodeURIComponent(x)}`,
                             );
-                            this.load(x);
+                            this.load(x, base);
                         }}
                     >
                         {i}
@@ -59,15 +59,16 @@ class Dir {
          */
         let data = await fetch(base + path).then(i => i.json());
         let elems = data.map(i => {
+            const fullpath = path + "/" + i.name;
             const deleteButton = (
                 <img
                     class={svg}
                     src={del}
                     onclick={async () => {
-                        await fetch(base + path + "/" + i.name, {
+                        await fetch(base + fullpath, {
                             method: "DELETE",
                         });
-                        this.load(path);
+                        this.load(path, base);
                     }}
                 />
             );
@@ -75,19 +76,15 @@ class Dir {
                 return (
                     <a
                         class={[css["entery"], css["dir"]]}
-                        href={`/file.html?path=${encodeURIComponent(
-                            path + "/" + i.name,
-                        )}`}
+                        href={`/disk.html?path=${encodeURIComponent(fullpath)}`}
                         onclick={event => {
                             event.preventDefault();
                             history.pushState(
                                 "",
-                                path + "/" + i.name,
-                                `?path=${encodeURIComponent(
-                                    path + "/" + i.name,
-                                )}`,
+                                fullpath,
+                                `?path=${encodeURIComponent(fullpath)}`,
                             );
-                            this.load(path + "/" + i.name);
+                            this.load(fullpath, base);
                         }}
                     >
                         <span class={css["name"]}>{i.name}</span>
@@ -100,7 +97,7 @@ class Dir {
                     <a
                         class={[css["entery"], css["playlist"]]}
                         href={`/player.html?path=${encodeURIComponent(
-                            base + path + "/" + i.name,
+                            base + fullpath,
                         )}`}
                     >
                         <span class={css["name"]}>{i.name}</span>
@@ -112,7 +109,7 @@ class Dir {
                 <a
                     class={[css["entery"], css["unknown"]]}
                     download
-                    href={encodeURI(base + path + "/" + i.name)}
+                    href={encodeURI(base + fullpath)}
                 >
                     <span class={css["name"]}>{i.name}</span>
                     <span class={css["btns"]}>{deleteButton}</span>
