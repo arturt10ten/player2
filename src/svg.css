@@ -1,4 +1,6 @@
 .svg {
     height: 32px;
     width: 32px;
+    filter: invert(99%) sepia(6%) saturate(1022%) hue-rotate(215deg)
+        brightness(116%) contrast(100%);
 }
