@@ -4,6 +4,8 @@ import css from "./file.css";
 import del from "../../res/trash.svg";
 import { List } from "../list/list.jsx";
 
+import { svg } from "../../svg.css";
+
 class Dir {
     constructor() {
         this._way = <div class={css["way"]}></div>;
