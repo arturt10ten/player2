@@ -21,7 +21,7 @@ class Dir {
      *
      * @param {string} path
      */
-    async load(path) {
+    async load(path, base = "/static/") {
         this._html.classList.add(css["loading"]);
         let way = path
             .split("/")
@@ -57,14 +57,20 @@ class Dir {
         /**
          * @type {Array<{dir:boolean,name:string}>}
          */
-        let data = await fetch("/static/" + path).then(i => i.json());
+        let data = await fetch(base + path).then(i => i.json());
         let elems = data.map(i => {
-            const fileDelete = async () => {
-                await fetch("/static/" + path + "/" + i.name, {
-                    method: "DELETE",
-                });
-                this.load(path);
-            };
+            const deleteButton = (
+                <img
+                    class={svg}
+                    src={del}
+                    onclick={async () => {
+                        await fetch(base + path + "/" + i.name, {
+                            method: "DELETE",
+                        });
+                        this.load(path);
+                    }}
+                />
+            );
             if (i.dir) {
                 return (
                     <a
@@ -85,9 +91,7 @@ class Dir {
                         }}
                     >
                         <span class={css["name"]}>{i.name}</span>
-                        <span class={css["btns"]}>
-                            <img class={svg} src={del} onclick={fileDelete} />
-                        </span>
+                        <span class={css["btns"]}>{deleteButton}</span>
                     </a>
                 );
             }
@@ -96,13 +100,11 @@ class Dir {
                     <a
                         class={[css["entery"], css["playlist"]]}
                         href={`/player.html?path=${encodeURIComponent(
-                            "/static/" + path + "/" + i.name,
+                            base + path + "/" + i.name,
                         )}`}
                     >
                         <span class={css["name"]}>{i.name}</span>
-                        <span class={css["btns"]}>
-                            <img class={svg} src={del} onclick={fileDelete} />
-                        </span>
+                        <span class={css["btns"]}>{deleteButton}</span>
                     </a>
                 );
             }
@@ -110,12 +112,10 @@ class Dir {
                 <a
                     class={[css["entery"], css["unknown"]]}
                     download
-                    href={encodeURI("/static/" + path + "/" + i.name)}
+                    href={encodeURI(base + path + "/" + i.name)}
                 >
                     <span class={css["name"]}>{i.name}</span>
-                    <span class={css["btns"]}>
-                        <img class={svg} src={del} onclick={fileDelete} />
-                    </span>
+                    <span class={css["btns"]}>{deleteButton}</span>
                 </a>
             );
         });
