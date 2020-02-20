@@ -61,16 +61,16 @@ class Playlist {
                     />
                     <img
                         class={[css["btn"], svg]}
-                        src={pause}
+                        src={play}
                         onclick={() => {
-                            this.pause();
+                            this.play();
                         }}
                     />
                     <img
                         class={[css["btn"], svg]}
-                        src={play}
+                        src={pause}
                         onclick={() => {
-                            this.play();
+                            this.pause();
                         }}
                     />
                     <img
