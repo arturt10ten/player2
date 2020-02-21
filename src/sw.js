@@ -15,7 +15,7 @@ self.addEventListener("fetch", function(event) {
             if (response) {
                 return response;
             }
-            var fetchRequest = req.clone();
+            var fetchRequest = event.request.clone();
             response = await fetch(fetchRequest);
             if (
                 !response ||
