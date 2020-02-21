@@ -70,13 +70,4 @@ function insert(content, element) {
     element.appendChild(content);
     if (content[P_insert]) if (element[In_HTML]) content[P_insert]();
 }
-async function a_flat(arr) {
-    let a = await arr;
-    if (Array.isArray(a)) a = await Promise.all(a.map(i => a_flat(i)));
-    else a = [a];
-    return a;
-}
-async function a_build_html(...args) {
-    return build_html(...(await a_flat(args)));
-}
 export { build_html, embed, insert, P_insert, In_HTML };
