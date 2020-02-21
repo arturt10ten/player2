@@ -133,7 +133,7 @@ async function main() {
     await bundle.write(rollup_out);
     for (let i = 0; i < pages.length; i++) {
         let js = await fs.promises.readFile(dist + pages[i] + ".js");
-        let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="preload" href="./style.css" as="style"><script>${js}</script></head><body></body></html>`;
+        let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="preload" href="./style.css" as="style"><script data-src="${pages[i]}.js">${js}</script></head><body></body></html>`;
         await fs.promises.writeFile(dist + pages[i] + ".html", html);
     }
     await fs.promises.writeFile(

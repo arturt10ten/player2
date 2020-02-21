@@ -16,6 +16,7 @@
         "incstr": "^1.2.3",
         "mime": "^2.4.4",
         "postcss-url": "file:npm_fix/postcss-url",
+        "puppeteer": "^2.1.1",
         "rollup": "^1.31.0",
         "rollup-plugin-babel": "^4.3.3",
         "rollup-plugin-import-assets": "^1.1.0",
