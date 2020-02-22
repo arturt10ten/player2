@@ -7,6 +7,8 @@ const mime = require("mime");
 
 const prerender = require("./prerenderer.js");
 
+const searchBots = [/Googlebot/, /YandexBot/];
+
 // function set_cookie(res, name, val, ttl) {
 //     var arr = res.getHeader("Set-Cookie") || [];
 //     arr.push(
@@ -54,12 +56,14 @@ class ReqRes {
 }
 
 async function handle_file(r) {
-    if (!/HeadlessChrome/.test(r.req.headers["user-agent"])) {
-        if (r.path.endsWith(".html")) {
-            r.res.end(
-                (await prerender("http://127.0.0.1:8089" + r.req.url)).html,
-            );
-            return;
+    if (r.path.endsWith(".html")) {
+        if (!/HeadlessChrome/.test(r.req.headers["user-agent"])) {
+            if (searchBots.some(reg => reg.test(r.req.headers["user-agent"]))) {
+                r.res.end(
+                    (await prerender("http://127.0.0.1:8089" + r.req.url)).html,
+                );
+                return;
+            }
         }
     }
     let acceptEncoding = r.req.headers["accept-encoding"];
