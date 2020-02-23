@@ -2,12 +2,9 @@ const CACHE_NAME = "dynamic_cache";
 self.addEventListener("fetch", function(event) {
     event.respondWith(
         (async () => {
-            let response = await caches.match(event.request);
-            if (response) {
-                return response;
-            }
             let url = new URL(event.request.url);
             if (url.pathname.startsWith("/api/")) {
+                return await fetch(event.request);
             }
             url.search = "";
             let req = new Request(url, { ...event.request });
@@ -15,7 +12,7 @@ self.addEventListener("fetch", function(event) {
             if (response) {
                 return response;
             }
-            var fetchRequest = event.request.clone();
+            var fetchRequest = req.clone();
             response = await fetch(fetchRequest);
             if (
                 !response ||
