@@ -5,7 +5,17 @@ import { Playlist } from "./comp/playlist/playlist.jsx";
 import { List } from "./comp/list/list.jsx";
 async function main() {
     let url = new URL(location.href);
-    let l = new Playlist(url.searchParams.get("path"));
+    let p = url.searchParams.get("path");
+    if (p == null) {
+        embed(
+            <html>
+                {head}
+                <body></body>
+            </html>,
+        );
+        return;
+    }
+    let l = new Playlist();
     let elems = await l.elems();
     let control = await l.controls();
     let content = (
