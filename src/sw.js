@@ -8,7 +8,7 @@ self.addEventListener("fetch", function(event) {
             }
             url.search = "";
             let req = new Request(url, { ...event.request });
-            response = await caches.match(req);
+            let response = await caches.match(req);
             if (response) {
                 return response;
             }
