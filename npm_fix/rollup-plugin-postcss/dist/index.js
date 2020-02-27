@@ -797,6 +797,7 @@ console.log(opts)
 
         const getExtracted = () => {
           const fileName = typeof postcssLoaderOptions.extract === 'string' ? normalizePath(path.relative(dir, postcssLoaderOptions.extract)) : `${path.basename(file, path.extname(file))}.css`;
+          console.log(fileName)
           const concat = new Concat(true, fileName, '\n');
           const entries = Array.from(extracted.values());
           const modules = bundle[normalizePath(path.relative(dir, file))].modules;
@@ -808,11 +809,11 @@ console.log(opts)
 
           for (var _i = 0; _i < entries.length; _i++) {
             const res = entries[_i];
-            const relative = normalizePath(path.relative(dir, res.id));
+            const relative = normalizePath(path.relative("./src/", res.id));
             const map = res.map || null;
-
             if (map) {
               map.file = fileName;
+              map.sources[0]=relative;
             }
 
             concat.add(relative, res.code, map);
