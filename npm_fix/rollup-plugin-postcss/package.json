@@ -1,8 +1,8 @@
 {
   "_from": "rollup-plugin-postcss",
-  "_id": "rollup-plugin-postcss@2.0.3",
+  "_id": "rollup-plugin-postcss@2.1.1",
   "_inBundle": false,
-  "_integrity": "sha512-d12oKl6za/GGXmlytzVPzzTdPCKgti/Kq2kNhtfm5vv9hkNbyrTvizMBm6zZ5rRWX/sIWl3znjIJ8xy6Hofoeg==",
+  "_integrity": "sha512-A9G3VGnWwfjlb5REp992+9NEosY0KdrysXYytNFCy107+QlZaRzIgHQYwBQ67BYlV8K4t0Yk2ukySFQceneUKA==",
   "_location": "/rollup-plugin-postcss",
   "_phantomChildren": {},
   "_requested": {
@@ -16,13 +16,13 @@
     "fetchSpec": "latest"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "https://registry.npmjs.org/rollup-plugin-postcss/-/rollup-plugin-postcss-2.0.3.tgz",
-  "_shasum": "1fd5b7e1fc7545cb0084d9c99d11b259e41a05e6",
+  "_resolved": "https://registry.npmjs.org/rollup-plugin-postcss/-/rollup-plugin-postcss-2.1.1.tgz",
+  "_shasum": "39b9b7c5da91741631b3a07ad1622a3477b307f4",
   "_spec": "rollup-plugin-postcss",
-  "_where": "/home/artur/progs/web/model3D",
+  "_where": "/home/artur/player2",
   "author": {
     "name": "EGOIST",
     "email": "0x142857@gmail.com"
@@ -71,7 +71,8 @@
     "fs-extra": "^7.0.1",
     "jest": "^23.6.0",
     "less": "^2.7.3",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.13.1",
+    "rollup": "^1.1.2",
     "stylus": "^0.54.5",
     "sugarss": "^1.0.1",
     "xo": "^0.18.2"
@@ -93,6 +94,12 @@
   "license": "MIT",
   "main": "dist/index.js",
   "name": "rollup-plugin-postcss",
+  "release": {
+    "branches": [
+      "master",
+      "next"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/egoist/rollup-plugin-postcss.git"
@@ -104,7 +111,7 @@
     "test": "npm run lint && jest",
     "test:cov": "npm run lint && jest --coverage"
   },
-  "version": "2.0.3",
+  "version": "2.1.1",
   "xo": {
     "extends": "rem",
     "envs": [
